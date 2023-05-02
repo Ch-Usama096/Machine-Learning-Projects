@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SPAM|PROJECT</title>
+
+    <!--Add the CSS-->
+    <style>
+        body{
+            background-color: black;
+        }
+        h1{
+            color: black;
+            text-transform: uppercase;
+            border: 2px solid green;
+            border-radius: 7px;
+            background-color: green;
+            text-align: center;
+            padding: 8px;
+            margin-top: 35px;
+        }
+        #outerData{
+            border: 2px solid green;
+            border-radius: 7px;
+            width: 30%;
+            margin-left: 441px;
+            margin-top: 120px;
+            background-color: green;
+        }
+        #outerData #innerData{
+            margin-left: 70px;
+        }
+        #outerData #innerData #spam{
+            margin-left: 25px;
+        }
+
+        #outerData #innerData textarea{
+            border: 3px solid white;
+            border-radius: 5px;
+        }
+        #outerData #innerData #button{
+            width: 80%;
+            margin-top: 5px;
+            margin-bottom: 7px;
+            background-color: black;
+            color: white;
+            border: 3px solid black;
+            border-radius: 5px;
+            text-transform: uppercase;
+            padding: 2px;
+        }
+        #outerData #innerData #prediction{
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Spam Detection System</h1>
+    <div id = "outerData">
+        <div id = "innerData">
+            <h3 id = "spam">Spam Detector For SMS</h3>
+            <form action = "{{url_for('process_request')}}" method = "post">
+                <textarea rows="10" cols="30" placeholder="Enter Your Text" name="text" required></textarea><br>
+                <input type="submit" value="predict" id="button">
+            </form>
+            <div id = "prediction">
+                {% if prediction == "NOT SPAM TEXT" or prediction == "SPAM TEXT" %}
+                    <h3>{{prediction}}</h3>
+                {% endif %}  
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
